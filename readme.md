@@ -1,52 +1,64 @@
+# 维多利亚3：AI梦境
 
-# template
+## 项目简介
 
-template project: description
+这是一个基于维多利亚3的AI梦境项目，旨在通过AI技术模拟和分析外交关系。
 
+## 作者
 
-## authors
+quanfa
 
-{authors involved into project, if necessary mark contribution behind a name}
+## 环境设置
 
-## environment
+项目使用Conda环境，定义在`environment.yml`文件中。请按照以下步骤设置环境：
 
-{environment}
+```bash
+conda env create -f environment.yml
+conda activate your_env_name
+```
 
-## structure
+## 项目结构
 
-the project follows structure:
+项目的目录结构如下：
 
 ```
-# this is the root of project
+# 项目根目录
 .  
-	# path for scripts
-	./myscripts  
+# 脚本目录
+./myscripts  
 
-		# exact script
-		./myscripts/.../{script_name}.py 
+# 具体脚本
+## AI梦境-外交历史评论家
+./myscripts/s1_diplomacy_relation_agent_prompt.py 
 
-		# (selectable) path for assets
-		./myscripts/.../{script_name}_assets 
+# Git忽略文件
+./.gitignore  
 
-		# (selectable) readme file
-		./myscripts/.../{script_name}.md 
+# 项目说明文件
+./readme.md  
 
-	# costume packages for project
-	./{packages}  
+# 环境依赖文件
+./requirements.txt  
 
-	# git control
-	./.gitignore  
-
-	# readme file for project
-	./readme.md  
-
-	# enVironment control
-	./requirements.txt  
-
-	# init or main
-	./main.py  
+# 主程序文件
+./main.py  
 ```
 
-# scripts
+## 使用说明
 
-            
+1. 克隆项目到本地：
+    ```bash
+    git clone <repository_url>
+    cd <repository_directory>
+    ```
+
+2. 设置Conda环境：
+    ```bash
+    conda env create -f environment.yml
+    conda activate your_env_name
+    ```
+
+3. 运行主程序：
+    ```bash
+    python main.py
+    ```
