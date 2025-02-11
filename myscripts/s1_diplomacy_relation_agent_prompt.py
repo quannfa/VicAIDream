@@ -33,6 +33,19 @@ def roel_prompt():
     return prompt
 
 def base_info_request_prompt(period=0, word_info_json=None):
+    """
+    AI返回的信息：
+        {
+            "当前主要国家之间的关系": "{等待信息}",
+            "当前主要国家之间的外交协议": "{等待信息}",
+            "当前主要国家的经济情况": "{等待信息}",
+            "国际组织与多边机构的活动": "{等待信息}",
+            "军事与科技发展": "{等待信息}",
+            "社会与文化事件": "{等待信息}",
+            "环境与能力建设": "{等待信息}"
+        }
+
+    """
     
     prompt = f"""现在开始第{period+1}个周期的基础信息获取阶段，请按照我的指令参与模拟：作为外交关系评论家你对当前周期的世界基本信息还一无所知。由于你必须根据本周期的世界基本情况展开评论，因此你需要向游戏 API 索取当前世界的基本信息，以便挑选你想评论的重大事件。你要获取的信息首先应当包括重大事件的名称。此外，你还可以根据自己的历史知识和分析需求，提出其他关于世界基本情况的信息需求。"""+"""请以 JSON 格式给出你想要索取的信息的模板，其中具体信息用‘{等待信息}’替换,按照以下格式提供你需要的json的格式：
 {
@@ -43,6 +56,10 @@ def base_info_request_prompt(period=0, word_info_json=None):
 }
 上述格式只是个模板，请你学习它的结构并根据你的需求提出接送格式的问题"""
     return prompt
+
+
+
+
 #%% main
 if __name__ == '__main__':
     print(f'start {__file__}')
@@ -51,6 +68,15 @@ if __name__ == '__main__':
         print(roel_prompt())
         print(base_info_request_prompt(period=period))
         print('-'*50)
+    
+    #%% 第一步初始化ollama模型，身份描述
+    
+    import ollama
+    res=ollama.chat(model="deepseek-r1:8b-40k",stream=False,messages=[{"role": "user","content": f"{roel_prompt()}"}],options={"temperature":0})
+    print(res)
+    
+    #%% 
+    
     
     
     #%% end script
